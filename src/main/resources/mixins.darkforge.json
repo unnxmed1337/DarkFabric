@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "uk.co.hexeption.darkforgereborn.mixin",
+  "refmap": "mixins.darkforge.refmap.json",
+  "mixins": [
+    "MixinMinecraft",
+    "MixinMainMenu"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
