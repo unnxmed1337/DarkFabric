@@ -4,9 +4,11 @@
   "package": "uk.co.hexeption.darkforgereborn.mixin",
   "refmap": "mixins.darkforge.refmap.json",
   "mixins": [
-    "MixinMinecraft",
+    "MixinBlock",
+    "MixinKeyboardListener",
     "MixinMainMenu",
-    "MixinKeyboardListener"
+    "MixinMinecraft",
+    "MixinVisGraph"
   ],
   "injectors": {
     "defaultRequire": 1
