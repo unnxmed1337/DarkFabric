@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import uk.co.hexeption.darkforgereborn.event.EventCaller;
 import uk.co.hexeption.darkforgereborn.managers.FontManager;
 import uk.co.hexeption.darkforgereborn.managers.ModManager;
+import uk.co.hexeption.darkforgereborn.ui.hud.DarkForgeHud;
 import uk.co.hexeption.darkforgereborn.util.LogHelper;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -29,6 +30,9 @@ public class DarkForgeReborn {
     // Font manager
     public final FontManager fontManager = new FontManager();
 
+    // Hud
+    public final DarkForgeHud darkForgeHud = new DarkForgeHud();
+
     public void start() {
         LogHelper.section(String.format("Starting %s v%s", ClientInfo.MOD_NAME, ClientInfo.MOD_BUILD));
         eventBus.subscribe(new EventCaller());
@@ -38,6 +42,7 @@ public class DarkForgeReborn {
         LogHelper.section("Loading Fonts");
         fontManager.init();
         LogHelper.section("Loading Huds");
+        eventBus.subscribe(darkForgeHud);
         LogHelper.section("Loading Tabs");
         LogHelper.section("Loading Configs");
 

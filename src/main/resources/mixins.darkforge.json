@@ -8,6 +8,7 @@
     "MixinEntityRendererManager",
     "MixinGameRenderer",
     "MixinKeyboardListener",
+    "MixinForgeIngameGui",
     "MixinMainMenu",
     "MixinMinecraft",
     "MixinPlayerController",
