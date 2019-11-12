@@ -5,7 +5,8 @@
   "refmap": "mixins.darkforge.refmap.json",
   "mixins": [
     "MixinMinecraft",
-    "MixinMainMenu"
+    "MixinMainMenu",
+    "MixinKeyboardListener"
   ],
   "injectors": {
     "defaultRequire": 1
