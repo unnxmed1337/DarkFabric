@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
         maven {
             name = 'SpongePowered'
-            url = 'http://repo.spongepowered.org/maven'
+            url = 'https://dist.creeper.host/Sponge/maven/'
         }
     }
     dependencies {
@@ -124,45 +124,6 @@ reobf {
 
 build.dependsOn(shadowJar)
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-
-    maven {
-        name = "spongepowered-repo"
-        url = "http://repo.spongepowered.org/maven"
-    }
-    maven {
-        name = "Jitpack"
-        url = "https://jitpack.io"
-    }
-    maven {
-        name = "CurseForge"
-        url = "https://minecraft.curseforge.com/api/maven/"
-    }
-
-}
-
-dependencies {
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.0-beta9'
-
-    compile "com.github.ZeroMemes:Alpine:1.6"
-
-    compile('net.minecraft:launchwrapper:1.11') {
-        exclude module: 'lwjgl'
-    }
-
-    compile 'org.ow2.asm:asm-commons:7.2'
-    compile 'org.ow2.asm:asm-util:6.2'
-
-    compile("org.spongepowered:mixin:0.8-SNAPSHOT")
-}
-
-jar {
-    manifest {
-        attributes("MixinConnector": 'uk.co.hexeption.darkforgereborn.Launcher')
-    }
-}
-
+apply from: "gradle/scripts/dependencies.gradle"
 
 
