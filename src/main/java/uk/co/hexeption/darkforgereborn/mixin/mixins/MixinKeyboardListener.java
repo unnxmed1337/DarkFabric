@@ -1,4 +1,4 @@
-package uk.co.hexeption.darkforgereborn.mixin;
+package uk.co.hexeption.darkforgereborn.mixin.mixins;
 
 import me.zero.alpine.event.EventState;
 import net.minecraft.client.KeyboardListener;

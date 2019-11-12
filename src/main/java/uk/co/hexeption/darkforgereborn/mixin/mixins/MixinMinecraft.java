@@ -1,4 +1,4 @@
-package uk.co.hexeption.darkforgereborn.mixin;
+package uk.co.hexeption.darkforgereborn.mixin.mixins;
 
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;

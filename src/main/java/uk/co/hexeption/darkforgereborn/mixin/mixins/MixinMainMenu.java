@@ -1,4 +1,4 @@
-package uk.co.hexeption.darkforgereborn.mixin;
+package uk.co.hexeption.darkforgereborn.mixin.mixins;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.MainMenuScreen;

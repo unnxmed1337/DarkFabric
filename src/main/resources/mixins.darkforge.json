@@ -1,13 +1,16 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "uk.co.hexeption.darkforgereborn.mixin",
+  "package": "uk.co.hexeption.darkforgereborn.mixin.mixins",
   "refmap": "mixins.darkforge.refmap.json",
   "mixins": [
     "MixinBlock",
+    "MixinEntityRendererManager",
+    "MixinGameRenderer",
     "MixinKeyboardListener",
     "MixinMainMenu",
     "MixinMinecraft",
+    "MixinPlayerController",
     "MixinVisGraph"
   ],
   "injectors": {
