@@ -16,9 +16,6 @@ import uk.co.hexeption.darkforgereborn.DarkForgeReborn;
 @Mixin(MainMenuScreen.class)
 public class MixinMainMenu {
 
-    @Inject(method = "render", at = @At("RETURN"))
-    private void render(CallbackInfo callbackInfo) {
-        DarkForgeReborn.INSTANCE.fontManager.mainMenu.drawStringWithShadow("Darkforge Mixin Test", 20, 20, -1);
-    }
 
 }
+ 
