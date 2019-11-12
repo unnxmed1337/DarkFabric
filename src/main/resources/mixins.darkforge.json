@@ -5,10 +5,11 @@
   "refmap": "mixins.darkforge.refmap.json",
   "mixins": [
     "MixinBlock",
+    "MixinClientPlayerEntity",
     "MixinEntityRendererManager",
+    "MixinForgeIngameGui",
     "MixinGameRenderer",
     "MixinKeyboardListener",
-    "MixinForgeIngameGui",
     "MixinMainMenu",
     "MixinMinecraft",
     "MixinPlayerController",
