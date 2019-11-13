@@ -12,6 +12,7 @@
     "MixinKeyboardListener",
     "MixinMainMenu",
     "MixinMinecraft",
+    "MixinNewChatCui",
     "MixinPlayerController",
     "MixinVisGraph"
   ],

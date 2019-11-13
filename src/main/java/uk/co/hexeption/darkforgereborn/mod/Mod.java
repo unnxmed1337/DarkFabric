@@ -34,7 +34,11 @@ public class Mod implements Listenable, IMC {
 
     public Mod() {
 
-        options.put("keybind", new Option("Keybind", "Module toggle keybind", new ValueString(GLFW.glfwGetKeyName(bind, GLFW.glfwGetKeyScancode(bind))), Type.KEYBIND));
+        if (GLFW.glfwGetKeyName(bind, GLFW.glfwGetKeyScancode(bind)) == null) {
+            options.put("keybind", new Option("Keybind", "Module toggle keybind", new ValueString("NONE"), Type.KEYBIND));
+        } else {
+            options.put("keybind", new Option("Keybind", "Module toggle keybind", new ValueString(GLFW.glfwGetKeyName(bind, GLFW.glfwGetKeyScancode(bind))), Type.KEYBIND));
+        }
         initCommands(name.toLowerCase().replaceAll(" ", ""));
     }
 

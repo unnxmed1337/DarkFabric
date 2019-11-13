@@ -37,7 +37,7 @@ public class ModManager {
     }
 
     public Mod getModByName(final String modName) {
-        return mods.stream().filter(mod -> mod.getName().equalsIgnoreCase(modName)).findFirst().orElse(null);
+        return mods.stream().filter(mod -> mod.getName().toLowerCase().replaceAll(" ", "").equalsIgnoreCase(modName)).findFirst().orElse(null);
     }
 
     public List<Mod> getMods() {
