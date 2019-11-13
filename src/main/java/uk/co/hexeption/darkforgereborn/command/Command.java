@@ -1,7 +1,9 @@
 package uk.co.hexeption.darkforgereborn.command;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import uk.co.hexeption.darkforgereborn.IMC;
 
 /**
@@ -51,4 +53,11 @@ public abstract class Command implements IMC {
     }
 
     public abstract void execute(String input, String[] args) throws Exception;
+
+    @Target(ElementType.TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface CommandNotLoad {
+
+    }
+
 }

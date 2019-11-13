@@ -4,14 +4,16 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+import joptsimple.internal.Strings;
 import me.zero.alpine.listener.Listenable;
 import org.lwjgl.glfw.GLFW;
 import uk.co.hexeption.darkforgereborn.DarkForgeReborn;
 import uk.co.hexeption.darkforgereborn.IMC;
+import uk.co.hexeption.darkforgereborn.command.commands.ModCommand;
 import uk.co.hexeption.darkforgereborn.mod.options.Option;
 import uk.co.hexeption.darkforgereborn.mod.options.Option.Type;
+import uk.co.hexeption.darkforgereborn.mod.options.ValueChoice;
 import uk.co.hexeption.darkforgereborn.mod.options.ValueString;
 import uk.co.hexeption.darkforgereborn.util.LogHelper;
 
@@ -33,7 +35,23 @@ public class Mod implements Listenable, IMC {
     public Mod() {
 
         options.put("keybind", new Option("Keybind", "Module toggle keybind", new ValueString(GLFW.glfwGetKeyName(bind, GLFW.glfwGetKeyScancode(bind))), Type.KEYBIND));
+        initCommands(name.toLowerCase().replaceAll(" ", ""));
     }
+
+    protected void initCommands(String base) {
+        List<String> usages = new ArrayList<>();
+        usages.add(base);
+        for (String key : options.keySet()) {
+            Option option = Option.get(options, key);
+            for (String key2 : option.options.keySet()) {
+                Option option2 = Option.get(options, key, key2);
+                usages.add(String.format("%s %s %s %s", name.replaceAll(" ", ""), option.name.replaceAll(" ", ""), option2.name.replaceAll(" ", ""), option2.type == Option.Type.CHOICE ? String.format(option2.type.usage, Strings.join(((ValueChoice) option2.value).list, "|")) : option2.type.usage).toLowerCase());
+            }
+            usages.add(String.format("%s %s %s", name.replaceAll(" ", ""), option.name.replaceAll(" ", ""), option.type == Option.Type.CHOICE ? String.format(option.type.usage, Strings.join(((ValueChoice) option.value).list, "|")) : option.type.usage).toLowerCase());
+        }
+        DarkForgeReborn.INSTANCE.commandManager.getCommands().add(new ModCommand(new String[]{base}, "tes", Arrays.toString(usages.toArray())));
+    }
+
 
     public boolean getState() {
 

@@ -11,6 +11,7 @@ import org.reflections.Reflections;
 import uk.co.hexeption.darkforgereborn.DarkForgeReborn;
 import uk.co.hexeption.darkforgereborn.command.Command;
 import uk.co.hexeption.darkforgereborn.command.Command.CMDInfo;
+import uk.co.hexeption.darkforgereborn.command.Command.CommandNotLoad;
 import uk.co.hexeption.darkforgereborn.event.events.chat.EventSendChatMessage;
 import uk.co.hexeption.darkforgereborn.util.LogHelper;
 
@@ -37,6 +38,9 @@ public class CommandManager implements Listenable {
 
         reflections.getTypesAnnotatedWith(CMDInfo.class).forEach(aClass -> {
             try {
+                if (aClass.isAnnotationPresent(CommandNotLoad.class)) {
+                    return;
+                }
                 Command command = (Command) aClass.newInstance();
                 commands.add(command);
             } catch (InstantiationException | IllegalAccessException e) {
@@ -50,25 +54,27 @@ public class CommandManager implements Listenable {
     }
 
     public boolean executeCommand(String message) {
-        String name = message.contains(" ") ? message.split(" ")[0] : message;
-        commands.forEach(command -> {
+        String commandName = message.contains(" ") ? message.split(" ")[0] : message;
+        for (Command command : commands) {
             for (String alias : command.getName()) {
-                if (alias.equalsIgnoreCase(name)) {
+                if (alias.toLowerCase().equals(commandName.toLowerCase())) {
                     if (message.contains(" ")) {
                         if (message.split(" ")[1].equalsIgnoreCase("aliases")) {
                             listAllNames(command);
+                            return true;
                         }
                     }
                     tryCommand(command, message);
+                    return true;
                 }
             }
-        });
+        }
         return false;
     }
 
     private void tryCommand(Command command, String message) {
         try {
-            String input = message.substring(1);
+            String input = message;
             String[] args;
 
             if (input.contains(" ")) {
