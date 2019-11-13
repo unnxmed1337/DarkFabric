@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uk.co.hexeption.darkforgereborn.event.EventCaller;
+import uk.co.hexeption.darkforgereborn.managers.CommandManager;
 import uk.co.hexeption.darkforgereborn.managers.FontManager;
 import uk.co.hexeption.darkforgereborn.managers.ModManager;
 import uk.co.hexeption.darkforgereborn.ui.hud.DarkForgeHud;
@@ -33,12 +34,20 @@ public class DarkForgeReborn {
     // Hud
     public final DarkForgeHud darkForgeHud = new DarkForgeHud();
 
+    // Command Manager
+    public final CommandManager commandManager = new CommandManager();
+
+    // Command Prefix (TODO: add to settings)
+    public String commandPrefix = ".";
+
     public void start() {
         LogHelper.section(String.format("Starting %s v%s", ClientInfo.MOD_NAME, ClientInfo.MOD_BUILD));
         eventBus.subscribe(new EventCaller());
         LogHelper.section("Loading Mods");
         modManager.init();
         LogHelper.section("Loading Commands");
+        commandManager.init();
+        eventBus.subscribe(commandManager);
         LogHelper.section("Loading Fonts");
         fontManager.init();
         LogHelper.section("Loading Huds");

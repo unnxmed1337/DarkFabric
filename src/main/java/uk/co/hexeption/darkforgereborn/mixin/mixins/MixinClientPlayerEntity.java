@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import uk.co.hexeption.darkforgereborn.DarkForgeReborn;
+import uk.co.hexeption.darkforgereborn.event.events.chat.EventSendChatMessage;
 import uk.co.hexeption.darkforgereborn.event.events.player.EventPlayerWalking;
 
 /**
@@ -33,6 +34,15 @@ public class MixinClientPlayerEntity {
         DarkForgeReborn.INSTANCE.eventBus.post(eventPlayerWalking);
         if (eventPlayerWalking.isCancelled()) {
             callbackInfoReturnable.cancel();
+        }
+    }
+
+    @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
+    private void sendChatMessage(String message, CallbackInfo callbackInfo) {
+        EventSendChatMessage eventSendChatMessage = new EventSendChatMessage(message);
+        DarkForgeReborn.INSTANCE.eventBus.post(eventSendChatMessage);
+        if (eventSendChatMessage.isCancelled()) {
+            callbackInfo.cancel();
         }
     }
 
