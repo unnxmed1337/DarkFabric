@@ -23,12 +23,6 @@
             <td>own license?</td>
             <td>https://projectlombok.org/</td>
         </tr>
-        <tr>
-            <td>Jetbrains Annotations - Annotation Processor</td>
-            <td>Team Lombok</td>
-            <td>none</td>
-            <td>https://mvnrepository.com/artifact/org.jetbrains/annotations/20.1.0</td>
-        </tr>
     </table>
 </body>
 
