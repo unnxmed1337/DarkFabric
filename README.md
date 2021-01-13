@@ -18,10 +18,16 @@
             <th>Link</th>
         </tr>
         <tr>
-            <td>Darkmagician 6 - EventApi</td>
-            <td>Kevin Driessen</td>
-            <td>The MIT License (MIT)</td>
-            <td>https://bitbucket.org/DarkMagician6/eventapi</td>
+            <td>Lombok - Annotation Processor</td>
+            <td>Team Lombok</td>
+            <td>own license?</td>
+            <td>https://projectlombok.org/</td>
+        </tr>
+        <tr>
+            <td>Jetbrains Annotations - Annotation Processor</td>
+            <td>Team Lombok</td>
+            <td>none</td>
+            <td>https://mvnrepository.com/artifact/org.jetbrains/annotations/20.1.0</td>
         </tr>
     </table>
 </body>
