@@ -1,1 +1,1 @@
-MixinConnector: uk.co.hexeption.darkforgereborn.Launcher
+MixinConnector: com.github.darkforge.Launcher

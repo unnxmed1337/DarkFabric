@@ -1,18 +1,17 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "uk.co.hexeption.darkforgereborn.mixin.mixins",
+  "package": "com.github.darkforge.injection.mixins",
   "refmap": "mixins.darkforge.refmap.json",
-  "mixins": [
+  "client": [
     "MixinBlock",
     "MixinClientPlayerEntity",
-    "MixinEntityRendererManager",
-    "MixinForgeIngameGui",
+    "MixinEntity",
+    "MixinForgeInGameGui",
     "MixinGameRenderer",
     "MixinKeyboardListener",
     "MixinMainMenu",
     "MixinMinecraft",
-    "MixinNewChatCui",
     "MixinPlayerController",
     "MixinVisGraph"
   ],
