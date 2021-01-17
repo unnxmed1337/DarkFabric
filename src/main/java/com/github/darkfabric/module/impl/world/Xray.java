@@ -1,12 +1,10 @@
 package com.github.darkfabric.module.impl.world;
 
 import com.github.darkfabric.event.impl.render.block.BlockRenderSideEvent;
-import com.github.darkfabric.event.impl.render.block.SetOpaqueCubeEvent;
 import com.github.darkfabric.module.AbstractModule;
 import com.github.darkfabric.module.options.Option;
 import com.github.darkfabric.module.options.ValueDouble;
 import com.google.common.collect.Lists;
-import me.zero.alpine.event.type.Cancellable;
 import me.zero.alpine.listener.Listener;
 import net.minecraft.client.AmbientOcclusionStatus;
 import net.minecraft.world.level.block.Block;
@@ -26,7 +24,6 @@ public class Xray extends AbstractModule {
 
     public final List<Block> xrayBlocks = Collections.synchronizedList(Lists.newLinkedList());
 
-    public Listener<SetOpaqueCubeEvent> setOpaqueCubeEventListener = new Listener<>(Cancellable::cancel);
     public Listener<BlockRenderSideEvent> blockRenderSideEventListener = new Listener<>(event -> {
         if (xrayBlocks.contains(event.getAdjacentState().getBlock()))
             event.setToRender(true);

@@ -21,7 +21,7 @@
             <td>Lombok - Annotation Processor</td>
             <td>Team Lombok</td>
             <td>own license?</td>
-            <td>https://projectlombok.org/</td>
+            <td>https://projectlombok.org</td>
         </tr>
         <tr>
             <td>Jetbrains - Annotation Processor</td>
@@ -39,7 +39,13 @@
             <td>TypeTools</td>
             <td>jhalterman</td>
             <td>apache-2.0</td>
-            <td>https://github.com/jhalterman/typetools/</td>
+            <td>https://github.com/jhalterman/typetools</td>
+        </tr>
+        <tr>
+            <td>Alpine</td>
+            <td>ZeroMemes</td>
+            <td>apache-2.0</td>
+            <td>https://github.com/ZeroMemes/Alpine</td>
         </tr>
     </table>
 </body>

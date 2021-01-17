@@ -12,12 +12,12 @@ import java.lang.annotation.Target;
  * object listener discovery. {@link Listener} type fields that
  * are unmarked will not be added to the {@code SUBSCRIPTION_CACHE}
  *
+ * @author Brady
  * @see Listener
  * @see EventManager
- *
- * @author Brady
  * @since 1/21/2017
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface EventHandler {}
+public @interface EventHandler {
+}

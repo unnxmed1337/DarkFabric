@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "modid",
+  "version": "${version}",
+  "name": "Dark Fabric",
+  "description": "Originally an Forge Mod from the 1.14.2 from hexeption. Ported by unnamed.",
+  "authors": [
+    "unnamed",
+    "hexeption"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/unnxmed1337/DarkFabric"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/darkfabric/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+    ]
+  },
+  "mixins": [
+    "darkfabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+  }
+}

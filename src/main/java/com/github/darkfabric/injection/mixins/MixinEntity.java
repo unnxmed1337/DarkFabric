@@ -1,7 +1,6 @@
 package com.github.darkfabric.injection.mixins;
 
 import com.github.darkfabric.injection.interfaces.IEntityRendererManager;
-import com.mojang.math.Vector3d;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +15,8 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(Entity.class)
 public abstract class MixinEntity implements IEntityRendererManager {
 
-    @Shadow private Vec3 position;
+    @Shadow
+    private Vec3 position;
 
     @Override
     public double getPosX() {

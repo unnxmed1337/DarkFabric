@@ -4,9 +4,8 @@ package me.zero.alpine.event.type;
  * A type of event that can be cancelled. The exact effect of cancelling an event
  * is dependent on how it is handled in the call-site itself.
  *
- * @see Cancellable
- *
  * @author Brady
+ * @see Cancellable
  * @since 9/15/2018
  */
 public interface ICancellable {
@@ -19,8 +18,8 @@ public interface ICancellable {
     void cancel();
 
     /**
-     * @see #cancel()
      * @return Whether or not the event has been cancelled
+     * @see #cancel()
      */
     boolean isCancelled();
 }

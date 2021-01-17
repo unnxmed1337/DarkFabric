@@ -8,8 +8,8 @@ import me.zero.alpine.bus.EventBus;
  * to be implemented, the only purpose is to make types containing listeners
  * explicit.
  *
- *
  * @author Brady
  * @since 9/15/2018
  */
-public interface Listenable {}
+public interface Listenable {
+}

@@ -19,9 +19,8 @@ public interface EventBus {
      * Discovers all of the valid Listeners defined in the
      * specified Listenable and subscribes them to the event bus.
      *
-     * @see Listener
-     *
      * @param listenable The Listenable to be subscribed to the event bus
+     * @see Listener
      */
     void subscribe(Listenable listenable);
 
@@ -29,19 +28,17 @@ public interface EventBus {
      * Subscribes an individual listener object, as opposed to subscribing
      * all of the listener fields that are defined in a class.
      *
-     * @see Listener
-     *
      * @param listener The individual listener to subscribe
+     * @see Listener
      */
     void subscribe(Listener listener);
 
     /**
      * Subscribes all of the specified Listenables
      *
+     * @param listenables An array of Listenable objects
      * @see Listener
      * @see #subscribe(Listenable)
-     *
-     * @param listenables An array of Listenable objects
      */
     default void subscribeAll(Listenable... listenables) {
         Arrays.stream(listenables).forEach(this::subscribe);
@@ -50,10 +47,9 @@ public interface EventBus {
     /**
      * Subscribes all of the specified Listenables
      *
+     * @param listenables An iterable of Listenable objects
      * @see Listener
      * @see #subscribe(Listenable)
-     *
-     * @param listenables An iterable of Listenable objects
      */
     default void subscribeAll(Iterable<Listenable> listenables) {
         listenables.forEach(this::subscribe);
@@ -62,10 +58,9 @@ public interface EventBus {
     /**
      * Subscribes all of the specified Listeners
      *
+     * @param listeners The array of listeners
      * @see Listener
      * @see #subscribe(Listener)
-     *
-     * @param listeners The array of listeners
      */
     default void subscribeAll(Listener... listeners) {
         Arrays.stream(listeners).forEach(this::subscribe);
@@ -74,28 +69,25 @@ public interface EventBus {
     /**
      * Unsubscribes all of the Listeners that are defined by the Listenable
      *
-     * @see #subscribe(Listenable)
-     *
      * @param listenable The Listenable to be unsubscribed from the event bus
+     * @see #subscribe(Listenable)
      */
     void unsubscribe(Listenable listenable);
 
     /**
      * Unsubscribe an individual listener object.
      *
-     * @see Listener
-     *
      * @param listener The individual listener to unsubscribe
+     * @see Listener
      */
     void unsubscribe(Listener listener);
 
     /**
      * Unsubscribes all of the specified Listenables
      *
+     * @param listenables The array of objects
      * @see Listener
      * @see #unsubscribe(Listenable)
-     *
-     * @param listenables The array of objects
      */
     default void unsubscribeAll(Listenable... listenables) {
         Arrays.stream(listenables).forEach(this::unsubscribe);
@@ -104,10 +96,9 @@ public interface EventBus {
     /**
      * Unsubscribes all of the specified Listenables
      *
+     * @param listenables The list of objects
      * @see Listener
      * @see #unsubscribe(Listenable)
-     *
-     * @param listenables The list of objects
      */
     default void unsubscribeAll(Iterable<Listenable> listenables) {
         listenables.forEach(this::unsubscribe);
@@ -116,10 +107,9 @@ public interface EventBus {
     /**
      * Unsubscribes all of the specified Listeners
      *
+     * @param listeners The array of listeners
      * @see Listener
      * @see #unsubscribe(Listener)
-     *
-     * @param listeners The array of listeners
      */
     default void unsubscribeAll(Listener... listeners) {
         Arrays.stream(listeners).forEach(this::unsubscribe);
@@ -128,9 +118,8 @@ public interface EventBus {
     /**
      * Posts an event to all registered {@code Listeners}.
      *
-     * @see Listener#invoke(Object)
-     *
      * @param event Event being called
+     * @see Listener#invoke(Object)
      */
     void post(Object event);
 }

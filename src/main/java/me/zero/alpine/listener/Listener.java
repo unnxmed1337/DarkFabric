@@ -11,7 +11,6 @@ import java.util.function.Predicate;
  * more explicit implementation of this class, {@link MethodRefListener}, should be used instead.
  *
  * @param <T> Target event type
- *
  * @author Brady
  * @since 1/21/2017
  */
@@ -68,9 +67,8 @@ public class Listener<T> implements EventHook<T> {
      * of a higher priority, and therefore the {@link Listener} will be called sooner in the
      * event posting sequence.
      *
-     * @see EventPriority
-     *
      * @return Priority of Listener
+     * @see EventPriority
      */
     public int getPriority() {
         return priority;
@@ -81,9 +79,8 @@ public class Listener<T> implements EventHook<T> {
      * testing it against the filters defined by this event listener, and if so, makes
      * the final event pass to this listener's handling body.
      *
-     * @see EventHook
-     *
      * @param event Event being called
+     * @see EventHook
      */
     @Override
     public void invoke(T event) {

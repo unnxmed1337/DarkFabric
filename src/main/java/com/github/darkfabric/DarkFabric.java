@@ -32,24 +32,20 @@ public class DarkFabric {
 
     public void initialize() {
         Runtime.getRuntime().addShutdownHook(new Thread(this::terminate));
-        LogHelper.section(String.format("Starting %s", getName()));
+        LogHelper.section(String.format("Initializing %s", getName()));
         LogHelper.section("Loading Mods");
         moduleRegistry.initialize();
         LogHelper.section("Loading Commands");
         commandRegistry.initialize();
         LogHelper.section("Loading Configs");
-        LogHelper.endSection();
         eventBus.subscribe(new EventCaller());
     }
 
     private void terminate() {
-        LogHelper.section(String.format("Stopping %s", getName()));
-
+        LogHelper.section(String.format("Terminating %s", getName()));
         LogHelper.section("Saving Mods");
         LogHelper.section("Saving Alts");
         LogHelper.section("Saving Friends");
-
-        LogHelper.endSection();
     }
 
     public String getName() {

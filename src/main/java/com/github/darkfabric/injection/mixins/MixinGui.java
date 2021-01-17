@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import me.zero.alpine.event.EventState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.screens.Overlay;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @since 12/11/2019 - 06:26 pm
  */
 @Mixin(Gui.class)
-public abstract class MixinOverlay {
+public abstract class MixinGui {
 
     private final Minecraft mc = Minecraft.getInstance();
 

@@ -71,11 +71,7 @@ public class LogHelper {
 
 
     public static void section(String message) {
-        info(StringUtils.center(" " + message + " ", 70, '='));
-    }
-
-    public static void endSection() {
-        info("-+-+-+-+-+-+-+-+-+-+-+-+* *+-+-+-+-+-+-+-+-+-+-+-+-");
+        info(StringUtils.center(" " + message + " ", 70, '-'));
     }
 
 }

@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * @since 12/11/2019 - 07:04 pm
  */
 @Mixin(LocalPlayer.class)
-public abstract class MixinClientPlayerEntity {
+public abstract class MixinLocalPlayer {
 
     @Inject(method = "tick", at = @At(value = "HEAD"))
     public void tick(CallbackInfo ci) {

@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.darkfabric.injection.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "MixinBlock",
+    "MixinLocalPlayer",
+    "MixinEntity",
+    "MixinKeyboardHandler",
+    "MixinMinecraft",
+    "MixinGui"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

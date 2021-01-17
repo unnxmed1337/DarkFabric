@@ -7,7 +7,6 @@ package me.zero.alpine.listener;
  * (most likely) will not be invoked.
  *
  * @param <T> Target event type
- *
  * @author Brady
  * @since 1/22/2017
  */
