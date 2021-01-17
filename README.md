@@ -12,19 +12,19 @@
 <body>
     <table>
         <tr>
-            <th>Library</th>
+            <th>Library / API</th>
             <th>Author</th>
             <th>License</th>
             <th>Link</th>
         </tr>
         <tr>
-            <td>Lombok - Annotation Processor</td>
+            <td>Lombok</td>
             <td>Team Lombok</td>
             <td>own license?</td>
             <td>https://projectlombok.org</td>
         </tr>
         <tr>
-            <td>Jetbrains - Annotation Processor</td>
+            <td>Jetbrains</td>
             <td>Jetbrains</td>
             <td>none</td>
             <td>https://mvnrepository.com/artifact/org.jetbrains/annotations</td>
