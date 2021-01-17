@@ -1,1 +1,0 @@
-MixinConnector: com.github.darkforge.Launcher
