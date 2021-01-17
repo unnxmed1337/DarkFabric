@@ -23,6 +23,24 @@
             <td>own license?</td>
             <td>https://projectlombok.org/</td>
         </tr>
+        <tr>
+            <td>Jetbrains - Annotation Processor</td>
+            <td>Jetbrains</td>
+            <td>none</td>
+            <td>https://mvnrepository.com/artifact/org.jetbrains/annotations</td>
+        </tr>
+        <tr>
+            <td>Reflections</td>
+            <td>ronmamo</td>
+            <td>DWTFYWT</td>
+            <td>https://github.com/ronmamo/reflections</td>
+        </tr>
+        <tr>
+            <td>TypeTools</td>
+            <td>jhalterman</td>
+            <td>apache-2.0</td>
+            <td>https://github.com/jhalterman/typetools/</td>
+        </tr>
     </table>
 </body>
 
