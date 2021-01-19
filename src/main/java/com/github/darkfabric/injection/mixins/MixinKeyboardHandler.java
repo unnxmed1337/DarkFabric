@@ -1,6 +1,7 @@
 package com.github.darkfabric.injection.mixins;
 
 import com.github.darkfabric.DarkFabric;
+import com.github.darkfabric.config.impl.Test;
 import com.github.darkfabric.event.impl.player.PlayerKeyPressEvent;
 import me.zero.alpine.event.EventState;
 import net.minecraft.client.KeyboardHandler;
@@ -22,9 +23,11 @@ public abstract class MixinKeyboardHandler {
     @Inject(method = "keyPress", at = @At("HEAD"))
     public void onKeyEvent(long windowPointer, int key, int scanCode,
                            int action, int modifiers, CallbackInfo callbackInfo) {
-        if (action == GLFW.GLFW_PRESS)
+        if (action == GLFW.GLFW_PRESS) {
             DarkFabric.getInstance().getEventBus().post(
                     new PlayerKeyPressEvent(EventState.POST, key, scanCode));
+            DarkFabric.getInstance().getConfigRegistry().getByClass(Test.class).getYamlFile().set("key." + key, key);
+        }
     }
 
 }

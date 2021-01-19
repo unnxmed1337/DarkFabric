@@ -1,9 +1,11 @@
 package com.github.darkfabric.command;
 
 import com.github.darkfabric.base.interfaces.INameable;
+import com.github.darkfabric.util.LogHelper;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import org.reflections.Reflections;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

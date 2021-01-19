@@ -5,11 +5,9 @@ import com.github.darkfabric.base.interfaces.INameable;
 
 public abstract class NamedSetRegistry<V extends INameable> extends SetRegistry<V> {
 
-    public V getByName(String name) {
-        for (V object : this.getObjects())
-            if (object.getName().equalsIgnoreCase(name))
-                return object;
-        return null;
+    public V getByName(String name, boolean ignoreCase) {
+        return getObjects().stream().filter(v -> (ignoreCase ? v.getName().equalsIgnoreCase(name)
+                : v.getName().equals(name))).findFirst().orElse(null);
     }
 
 }

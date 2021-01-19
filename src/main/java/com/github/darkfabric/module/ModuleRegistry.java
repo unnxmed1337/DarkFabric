@@ -1,6 +1,7 @@
 package com.github.darkfabric.module;
 
 import com.github.darkfabric.base.named.NamedRegistry;
+import com.github.darkfabric.util.LogHelper;
 import org.reflections.Reflections;
 
 import java.util.List;
@@ -16,7 +17,9 @@ public class ModuleRegistry extends NamedRegistry<AbstractModule> {
         Reflections reflections = new Reflections(AbstractModule.class.getPackage().getName());
         reflections.getTypesAnnotatedWith(AbstractModule.Info.class).forEach(abstractModuleClass -> {
             try {
-                getObjects().add((AbstractModule) abstractModuleClass.newInstance());
+                AbstractModule abstractModule = (AbstractModule) abstractModuleClass.newInstance();
+                getObjects().add(abstractModule);
+                LogHelper.info(String.format(" -> added '%s'.", abstractModule.getName()));
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }

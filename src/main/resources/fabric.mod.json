@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "darkfabric",
   "version": "${version}",
   "name": "Dark Fabric",
-  "description": "Originally an Forge Mod from the 1.14.2 from hexeption. Ported by unnamed.",
+  "description": "Originally an Forge Mod from the 1.14.2 from hexeption.\nPorted by unnamed.",
   "authors": [
     "unnamed",
     "hexeption"
@@ -28,5 +28,6 @@
     "minecraft": "1.16.x"
   },
   "suggests": {
+    "modmenu": "*"
   }
 }

@@ -21,4 +21,9 @@ public abstract class MixinMinecraft {
         DarkFabric.getInstance().initialize();
     }
 
+    @Inject(method = "close", at = @At(value = "HEAD"))
+    private void close(CallbackInfo callbackInfo) {
+        DarkFabric.getInstance().terminate();
+    }
+
 }

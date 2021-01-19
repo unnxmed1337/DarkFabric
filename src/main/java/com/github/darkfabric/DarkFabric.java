@@ -1,6 +1,9 @@
 package com.github.darkfabric;
 
+import com.github.darkfabric.addon.AbstractAddon;
+import com.github.darkfabric.addon.AddonRegistry;
 import com.github.darkfabric.command.CommandRegistry;
+import com.github.darkfabric.config.ConfigRegistry;
 import com.github.darkfabric.event.EventCaller;
 import com.github.darkfabric.module.ModuleRegistry;
 import com.github.darkfabric.util.LogHelper;
@@ -16,6 +19,8 @@ public class DarkFabric {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final DarkFabric INSTANCE = new DarkFabric();
 
+    private final ConfigRegistry configRegistry = new ConfigRegistry();
+    private final AddonRegistry addonRegistry = new AddonRegistry();
     private final ModuleRegistry moduleRegistry = new ModuleRegistry();
     private final CommandRegistry commandRegistry = new CommandRegistry();
     private final char commandPrefix = '-';
@@ -31,21 +36,28 @@ public class DarkFabric {
     }
 
     public void initialize() {
-        Runtime.getRuntime().addShutdownHook(new Thread(this::terminate));
+        addonRegistry.getObjects().forEach(AbstractAddon::preInit);
+        LogHelper.introduce();
         LogHelper.section(String.format("Initializing %s", getName()));
-        LogHelper.section("Loading Mods");
+        LogHelper.section("loading configs");
+        configRegistry.loadAll();
+        LogHelper.section("loading modules");
         moduleRegistry.initialize();
-        LogHelper.section("Loading Commands");
+        LogHelper.section("loading commands");
         commandRegistry.initialize();
-        LogHelper.section("Loading Configs");
+        LogHelper.section("loading addons");
+        addonRegistry.initialize();
+        addonRegistry.getObjects().forEach(AbstractAddon::init);
+        LogHelper.section(String.format("Done with %s", getName()));
         eventBus.subscribe(new EventCaller());
+        addonRegistry.getObjects().forEach(AbstractAddon::postInit);
     }
 
-    private void terminate() {
+    public void terminate() {
         LogHelper.section(String.format("Terminating %s", getName()));
-        LogHelper.section("Saving Mods");
-        LogHelper.section("Saving Alts");
-        LogHelper.section("Saving Friends");
+        LogHelper.section("saving all configs");
+        configRegistry.saveAll();
+        LogHelper.section(String.format("Done with %s", getName()));
     }
 
     public String getName() {

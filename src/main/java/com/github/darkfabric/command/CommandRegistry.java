@@ -1,8 +1,10 @@
 package com.github.darkfabric.command;
 
 import com.github.darkfabric.base.named.NamedRegistry;
+import com.github.darkfabric.util.LogHelper;
 import org.reflections.Reflections;
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class CommandRegistry extends NamedRegistry<AbstractCommand> {
@@ -19,10 +21,10 @@ public class CommandRegistry extends NamedRegistry<AbstractCommand> {
 
     public void registerAllCommands() {
         Reflections reflections = new Reflections(AbstractCommand.class.getPackage().getName());
-        reflections.getTypesAnnotatedWith(AbstractCommand.Info.class).forEach(aClass -> {
+        reflections.getTypesAnnotatedWith(AbstractCommand.Info.class).forEach(abstractCommandClass -> {
             try {
-                AbstractCommand command = (AbstractCommand) aClass.newInstance();
-                getObjects().add(command);
+                AbstractCommand abstractCommand = (AbstractCommand) abstractCommandClass.newInstance();
+                register(abstractCommand);
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -30,14 +32,16 @@ public class CommandRegistry extends NamedRegistry<AbstractCommand> {
     }
 
     @Override
-    public void register(AbstractCommand abstractCommand) {
-        System.out.println(" -> registered '" + abstractCommand.getAliases() + "'");
+    public void register(AbstractCommand... abstractCommand) {
+        Arrays.stream(abstractCommand).forEach(command -> LogHelper.info(String.format(" -> registered '%s'",
+                command.getAliases())));
         super.register(abstractCommand);
     }
 
     @Override
-    public void unregister(AbstractCommand abstractCommand) {
-        System.out.println(" -> unregistered '" + abstractCommand.getAliases() + "'");
+    public void unregister(AbstractCommand... abstractCommand) {
+        Arrays.stream(abstractCommand).forEach(command -> LogHelper.info(String.format(" -> unregistered '%s'",
+                command.getAliases())));
         super.register(abstractCommand);
     }
 

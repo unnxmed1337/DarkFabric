@@ -10,9 +10,18 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.fabricmc.net/' }
+        maven { url 'https://repo.viaversion.com/' }
+    }
+}
+
 dependencies {
     compile group: 'org.reflections', name: 'reflections', version: '0.9.12'
     compile group: 'net.jodah', name: 'typetools', version: '0.6.2'
+    compile group: 'com.github.Carleslc.Simple-YAML', name: 'Simple-Yaml', version: '1.7.2'
 
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
@@ -28,9 +37,11 @@ dependencies {
 
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings minecraft.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    modImplementation "io.github.prospector:modmenu:1.14.13+build.22"
 }
 
 processResources {
@@ -70,6 +81,4 @@ publishing {
         }
     }
 
-    repositories {
-    }
 }
