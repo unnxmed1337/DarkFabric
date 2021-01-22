@@ -16,7 +16,7 @@ public class Toggle extends AbstractCommand {
     public boolean execute(String[] args) {
         if (args.length != 1) return true;
         try {
-            DarkFabric.getInstance().getModuleRegistry().getByName(args[0]).toggle();
+            DarkFabric.getInstance().getModuleRegistry().getByName(args[0], true).toggle();
         } catch (Exception ignored) {
         }
         return false;

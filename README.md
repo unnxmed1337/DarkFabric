@@ -20,32 +20,44 @@
         <tr>
             <td>Lombok</td>
             <td>Team Lombok</td>
-            <td>own license?</td>
-            <td>https://projectlombok.org</td>
+            <td>idk.</td>
+            <td>https://bit.ly/3o0Uex5</td>
         </tr>
         <tr>
             <td>Jetbrains</td>
             <td>Jetbrains</td>
             <td>none</td>
-            <td>https://mvnrepository.com/artifact/org.jetbrains/annotations</td>
-        </tr>
-        <tr>
-            <td>Reflections</td>
-            <td>ronmamo</td>
-            <td>DWTFYWT</td>
-            <td>https://github.com/ronmamo/reflections</td>
-        </tr>
-        <tr>
-            <td>TypeTools</td>
-            <td>jhalterman</td>
-            <td>apache-2.0</td>
-            <td>https://github.com/jhalterman/typetools</td>
+            <td>https://bit.ly/2KxKFbf</td>
         </tr>
         <tr>
             <td>Alpine</td>
             <td>ZeroMemes</td>
             <td>apache-2.0</td>
-            <td>https://github.com/ZeroMemes/Alpine</td>
+            <td>https://bit.ly/39TQ7he</td>
+        </tr>
+        <tr>
+            <td>Reflections</td>
+            <td>ronmamo</td>
+            <td>DWTFYWT</td>
+            <td>https://bit.ly/3sIwzFd</td>
+        </tr>
+        <tr>
+            <td>TypeTools</td>
+            <td>jhalterman</td>
+            <td>apache-2.0</td>
+            <td>https://bit.ly/3qzUo0b</td>
+        </tr>
+        <tr>
+            <td>FontRenderer</td>
+            <td>superblaubeere27</td>
+            <td>MIT</td>
+            <td>https://bit.ly/3a52dV9</td>
+        </tr>
+        <tr>
+            <td>ShaderRenderer</td>
+            <td>superblaubeere27</td>
+            <td>idk.</td>
+            <td>https://bit.ly/35Zt6rY</td>
         </tr>
     </table>
 </body>

@@ -10,6 +10,7 @@ import com.github.darkfabric.util.LogHelper;
 import lombok.Getter;
 import me.zero.alpine.bus.EventBus;
 import me.zero.alpine.bus.EventManager;
+import net.superblaubeere27.clientbase.utils.ShaderRenderer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,8 +25,9 @@ public class DarkFabric {
     private final ModuleRegistry moduleRegistry = new ModuleRegistry();
     private final CommandRegistry commandRegistry = new CommandRegistry();
     private final char commandPrefix = '-';
-
     private final EventBus eventBus = new EventManager();
+    private ShaderRenderer shaderRenderer;
+    private long initTime = System.currentTimeMillis();
 
     public static DarkFabric getInstance() {
         return INSTANCE;
@@ -41,6 +43,15 @@ public class DarkFabric {
         LogHelper.section(String.format("Initializing %s", getName()));
         LogHelper.section("loading configs");
         configRegistry.loadAll();
+
+        LogHelper.section("loading shaders");
+        try {
+            shaderRenderer = new ShaderRenderer("default");
+        } catch (Exception e) {
+            throw new IllegalStateException("Failed to load background shader", e);
+        }
+        initTime = System.currentTimeMillis();
+
         LogHelper.section("loading modules");
         moduleRegistry.initialize();
         LogHelper.section("loading commands");

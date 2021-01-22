@@ -3,17 +3,17 @@
   "id": "darkfabric",
   "version": "${version}",
   "name": "Dark Fabric",
-  "description": "Originally an Forge Mod from the 1.14.2 from hexeption.\nPorted by unnamed.",
+  "description": "Originally an Forge Mod from the 1.14.2 by hexeption.\nPorted by unnamed.",
   "authors": [
     "unnamed",
     "hexeption"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
+    "homepage": "https://bit.ly/35ZPlOJ",
     "sources": "https://github.com/unnxmed1337/DarkFabric"
   },
   "license": "CC0-1.0",
-  "icon": "assets/darkfabric/icon.png",
+  "icon": "assets/darkfabric/icons/darkfabric.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -28,6 +28,9 @@
     "minecraft": "1.16.x"
   },
   "suggests": {
-    "modmenu": "*"
+    "modmenu": ">=1.14.13",
+    "smoothscrollingeverywhere": ">=3.0.2-unstable",
+    "multiconnect" : ">=1.3.34",
+    "viafabric" : ">=0.3.0-SNAPSHOT"
   }
 }

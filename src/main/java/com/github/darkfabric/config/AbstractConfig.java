@@ -57,7 +57,6 @@ public abstract class AbstractConfig implements INameable {
                 folder.mkdirs();
             if (!config.exists())
                 config.createNewFile();
-            System.out.println(config.getAbsolutePath());
             yamlFile.load(config);
             onLoad();
         } catch (Exception exception) {

@@ -40,9 +40,8 @@ public class ConfigRegistry extends NamedRegistry<AbstractConfig> {
         reflections.getTypesAnnotatedWith(AbstractConfig.Info.class).forEach(abstractConfigClass -> {
             try {
                 AbstractConfig abstractConfig = (AbstractConfig) abstractConfigClass.newInstance();
-                System.out.println(abstractConfig.getName());
                 abstractConfig.initialize();
-                getObjects().add(abstractConfig);
+                register(abstractConfig);
                 LogHelper.info(String.format(" -> loaded '%s'.", abstractConfig.getName()));
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
