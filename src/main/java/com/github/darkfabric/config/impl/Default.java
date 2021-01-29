@@ -2,8 +2,8 @@ package com.github.darkfabric.config.impl;
 
 import com.github.darkfabric.config.AbstractConfig;
 
-@AbstractConfig.Info(name = "test")
-public class Test extends AbstractConfig {
+@AbstractConfig.Info(name = "default")
+public class Default extends AbstractConfig {
     @Override
     public void onLoadPre() {
 

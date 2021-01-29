@@ -10,21 +10,18 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.TextComponent;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 
 public class MenuLogin extends Menu {
 
-    private final Screen prevScreen;
     private EditBox emailBox, passwordBox;
 
     private String status;
 
     public MenuLogin(Screen prevScreen) {
-        super("Login", "Just a simple login.");
-        this.prevScreen = prevScreen;
+        super(prevScreen, "Login", "Just a simple login.");
         status = ChatColors.GRAY + "Idle...";
     }
 
@@ -81,11 +78,8 @@ public class MenuLogin extends Menu {
                 200, 20, new TextComponent("okay v2"));
         passwordBox.setMaxLength(Integer.MAX_VALUE);
 
-        addButton(new Button(width / 2 - 101, height / 2 + 24, 100, 20,
+        addButton(new Button(width / 2 - 101, height / 2 + 24, 200, 20,
                 new TextComponent("Login"), button -> login()));
-
-        addButton(new Button(width / 2 + 1, height / 2 + 24, 100, 20,
-                CommonComponents.GUI_CANCEL, button -> minecraft.setScreen(prevScreen)));
 
         children.add(emailBox);
         children.add(passwordBox);

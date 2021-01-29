@@ -3,19 +3,23 @@
   "minVersion": "0.8",
   "package": "com.github.darkfabric.injection.mixins",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "MixinMouseHandler",
-    "MixinObjectSelectionList"
-  ],
   "client": [
+    "MixinAbstractSelectionList",
     "MixinBlock",
+    "MixinClientboundLevelParticlesPacket",
     "MixinEntity",
     "MixinGui",
     "MixinKeyboardHandler",
+    "MixinLoadingOverlay",
     "MixinLocalPlayer",
     "MixinMinecraft",
+    "MixinModsScreen",
+    "MixinMouseHandler",
+    "MixinPackSelectionScreen",
     "MixinScreen",
-    "MixinTitleScreen"
+    "MixinTitleScreen",
+    "MixinTransferableSelectionList",
+    "MixinWindow"
   ],
   "injectors": {
     "defaultRequire": 1

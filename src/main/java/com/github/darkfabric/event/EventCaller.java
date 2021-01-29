@@ -22,7 +22,14 @@ public class EventCaller implements Listenable {
 
     @EventHandler
     private final Listener<PlayerKeyPressEvent> playerKeyPressEventListener = new Listener<>(event -> {
-        if (event.getKey() == GLFW.GLFW_KEY_L) System.out.println(Minecraft.getInstance().screen);
+        try {
+            if (event.getKey() == GLFW.GLFW_KEY_L) System.out.println(Minecraft.getInstance().screen);
+            //if (event.getKey() == GLFW.GLFW_KEY_SPACE) Minecraft.getInstance().player.jumpFromGround();
+            if (event.getKey() == GLFW.GLFW_KEY_0) {
+                DarkFabric.getInstance().getPresenceRegistry().restartRpc();
+            }
+        } catch (Exception ignored) {
+        }
     });
 
     @EventHandler

@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '0.5-SNAPSHOT'
     id 'maven-publish'
+    id "com.github.johnrengelman.shadow" version "6.1.0"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -18,10 +19,27 @@ allprojects {
     }
 }
 
+configurations {
+    shade.transitive = false
+}
+
 dependencies {
-    compile group: 'org.reflections', name: 'reflections', version: '0.9.12'
-    compile group: 'net.jodah', name: 'typetools', version: '0.6.2'
-    compile group: 'com.github.Carleslc.Simple-YAML', name: 'Simple-Yaml', version: '1.7.2'
+    shade("org.reflections:reflections:0.9.12") {
+        transitive = false
+    }
+    shade("net.jodah:typetools:0.6.2") {
+        transitive = false
+    }
+    shade("com.github.Carleslc.Simple-YAML:Simple-Yaml:1.7.2") {
+        transitive = false
+    }
+    shade("org.javassist:javassist:3.27.0-GA") {
+        transitive = false
+    }
+
+    implementation "org.reflections:reflections:0.9.12"
+    implementation "net.jodah:typetools:0.6.2"
+    implementation "com.github.Carleslc.Simple-YAML:Simple-Yaml:1.7.2"
 
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
@@ -59,6 +77,10 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
+shadowJar {
+    configurations = [project.configurations.shade]
+}
+
 java {
     withSourcesJar()
 }
@@ -82,3 +104,5 @@ publishing {
     }
 
 }
+tasks.remapJar.dependsOn(shadowJar)
+(tasks.remapJar.input as FileSystemLocationProperty<? extends FileSystemLocation>).set(shadowJar.archivePath)

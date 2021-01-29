@@ -2,6 +2,7 @@ package com.github.darkfabric.gui.screen;
 
 import com.github.darkfabric.DarkFabric;
 import com.github.darkfabric.gui.FancyButtonWidget;
+import com.github.darkfabric.gui.screen.menu.MenuClient;
 import com.github.darkfabric.gui.screen.menu.MenuLogin;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.prospector.modmenu.gui.ModsScreen;
@@ -19,7 +20,7 @@ import java.awt.*;
 public class ScreenMainMenu extends Screen {
 
     public ScreenMainMenu() {
-        super(new TextComponent("okay"));
+        super(new TextComponent("Main Menu"));
     }
 
     @Override
@@ -48,10 +49,19 @@ public class ScreenMainMenu extends Screen {
                 new Color(85, 85, 255), "Multiplayer", btnMultiPlayerDescription,
                 new ResourceLocation("darkfabric", "icons/mainmenu/multiplayer.png")));
 
+        String btnLoginDescription = "A menu for client-specific operations.";
+        int btnLoginHeight = 25;
+        int btnLoginWidth = minecraft.font.width(btnLoginDescription) + btnLoginHeight + 4;
+        addButton(new FancyButtonWidget(width - btnLoginWidth - 25, height - btnLoginHeight * 2,
+                btnLoginWidth, btnLoginHeight,
+                button -> minecraft.setScreen(new MenuClient(this)),
+                new Color(255, 85, 85), "Client Menu", btnLoginDescription,
+                new ResourceLocation("darkfabric", "icons/mainmenu/client.png")));
+
         String btnModsDescription = "Shows all installed Mods.";
         int btnModsHeight = 25;
         int btnModsWidth = minecraft.font.width(btnModsDescription) + btnModsHeight + 4;
-        addButton(new FancyButtonWidget(width - btnModsWidth - 25, height - btnModsHeight * 2,
+        addButton(new FancyButtonWidget(width - btnModsWidth - 25, height - btnModsHeight * 3 - 5,
                 btnModsWidth, btnModsHeight, button -> {
             try {
                 minecraft.setScreen(new ModsScreen(this));
@@ -65,20 +75,11 @@ public class ScreenMainMenu extends Screen {
         String btnSettingsDescription = "Set various things.";
         int btnSettingsHeight = 25;
         int btnSettingsWidth = minecraft.font.width(btnSettingsDescription) + btnSettingsHeight + 4;
-        addButton(new FancyButtonWidget(width - btnSettingsWidth - 25, height - btnSettingsHeight * 3 - 5,
+        addButton(new FancyButtonWidget(width - btnSettingsWidth - 25, height - btnSettingsHeight * 4 - 10,
                 btnSettingsWidth, btnSettingsHeight,
                 button -> minecraft.setScreen(new OptionsScreen(this, minecraft.options)),
                 new Color(170, 170, 170), "Settings", btnSettingsDescription,
                 new ResourceLocation("darkfabric", "icons/mainmenu/settings.png")));
-
-        String btnLoginDescription = ".";
-        int btnLoginHeight = 25;
-        int btnLoginWidth = minecraft.font.width(btnLoginDescription) + btnLoginHeight + 4;
-        addButton(new FancyButtonWidget(width - btnLoginWidth - 25, height - btnLoginHeight * 4 - 10,
-                btnLoginWidth, btnLoginHeight,
-                button -> minecraft.setScreen(new MenuLogin(this)),
-                new Color(255, 85, 85), "Client Menu", btnLoginDescription,
-                new ResourceLocation("darkfabric", "icons/mainmenu/client.png")));
         super.init();
     }
 

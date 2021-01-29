@@ -26,6 +26,19 @@ import java.net.URL;
 
 public class AuthUtils {
 
+    public static void useProxy(Proxy proxy) throws AuthenticationException {
+        ((IMixinMinecraft) Minecraft.getInstance()).setProxy(proxy);
+        final User user = Minecraft.getInstance().getUser();
+        YggdrasilAuthenticationService yggdrasilAuthenticationService = new YggdrasilAuthenticationService(proxy);
+        YggdrasilMinecraftSessionService service
+                = (YggdrasilMinecraftSessionService) yggdrasilAuthenticationService.createMinecraftSessionService();
+        setService(yggdrasilAuthenticationService, yggdrasilAuthenticationService);
+        setBaseUrl(service, YggdrasilEnvironment.PROD.getSessionHost() + "/session/minecraft/");
+        setJoinUrl(service, YggdrasilEnvironment.PROD.getSessionHost() + "/session/minecraft/join");
+        setCheckUrl(service, YggdrasilEnvironment.PROD.getSessionHost() + "/session/minecraft/hasJoined");
+        ((IMixinMinecraft) Minecraft.getInstance()).setUser(user);
+    }
+
     public static User createPremiumAuthenticatedSession(String email, String password)
             throws AuthenticationException {
         YggdrasilUserAuthentication auth = createUserAuthentication();
@@ -38,6 +51,11 @@ public class AuthUtils {
 
     public static YggdrasilUserAuthentication createUserAuthentication() {
         return (YggdrasilUserAuthentication) new YggdrasilAuthenticationService(Proxy.NO_PROXY, "")
+                .createUserAuthentication(Agent.MINECRAFT);
+    }
+
+    public static YggdrasilUserAuthentication createProxiedUserAuthentication(Proxy proxy) {
+        return (YggdrasilUserAuthentication) new YggdrasilAuthenticationService(proxy, "")
                 .createUserAuthentication(Agent.MINECRAFT);
     }
 
@@ -94,6 +112,17 @@ public class AuthUtils {
             field.setAccessible(true);
             field.set(service, new URL(url));
         } catch (IllegalAccessException | NoSuchFieldException | MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void setService(YggdrasilAuthenticationService serviceBefore,
+                                   YggdrasilAuthenticationService serviceAfter) {
+        try {
+            Field field = serviceBefore.getClass().getDeclaredField("getAuthenticationService");
+            field.setAccessible(true);
+            field.set(serviceBefore, serviceAfter);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
         }
     }

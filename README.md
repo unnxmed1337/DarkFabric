@@ -59,6 +59,12 @@
             <td>idk.</td>
             <td>https://bit.ly/35Zt6rY</td>
         </tr>
+        <tr>
+            <td>Discord-RPC</td>
+            <td>vatuu/arikia</td>
+            <td>MIT</td>
+            <td>https://bit.ly/2MiNVIc</td>
+        </tr>
     </table>
 </body>
 
