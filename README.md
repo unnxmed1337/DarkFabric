@@ -7,9 +7,16 @@
     <h1><img src="https://imgur.com/DRoXHu5.png">
     </h1>
     <p><b>This</b> is a <b>fork</b> of the <b><a href="https://github.com/Hexeption/DarkForge-Reborn" target="_blank">original-repo</a></b> from <b>hexeption</b>. the <b>intention</b> of this fork is, to port DarkFabric always to the latest <b>Fabric version</b>, Minecraft <b>Release</b> and to add <b>more features.</b>
-        <hr>Used libraries/apis:</head>
+        <hr>Used libraries/apis:
+<style>
+    p.verybig {
+  font-size: 55px;
+}
+</style>
+</head>
 
 <body>
+    <p class="verybig">🚧 !!Discontinued!! 🚧</p>
     <table>
         <tr>
             <th>Library / API</th>
