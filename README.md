@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 
 <head>
+    <h3>🚧 !!Discontinued!! 🚧</h3>
     <h3>🚧 Under construction! 🚧</h3>
     <h1><img src="https://imgur.com/DRoXHu5.png">
     </h1>
@@ -11,7 +12,6 @@
 </head>
 
 <body>
-    <p class="verybig">🚧 !!Discontinued!! 🚧</p>
     <table>
         <tr>
             <th>Library / API</th>
