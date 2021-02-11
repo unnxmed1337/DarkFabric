@@ -4,7 +4,6 @@
 
 <head>
     <h3>🚧 !!Discontinued!! 🚧</h3>
-    <h3>🚧 Under construction! 🚧</h3>
     <h1><img src="https://imgur.com/DRoXHu5.png">
     </h1>
     <p><b>This</b> is a <b>fork</b> of the <b><a href="https://github.com/Hexeption/DarkForge-Reborn" target="_blank">original-repo</a></b> from <b>hexeption</b>. the <b>intention</b> of this fork is, to port DarkFabric always to the latest <b>Fabric version</b>, Minecraft <b>Release</b> and to add <b>more features.</b>
